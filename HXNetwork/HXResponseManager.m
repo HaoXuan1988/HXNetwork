@@ -7,8 +7,8 @@
 //
 
 #import "HXResponseManager.h"
-#import "AFNetworking.h"
-#import "AFNetworkActivityIndicatorManager.h"
+#import <AFNetworking.h>
+#import <AFNetworkActivityIndicatorManager.h>
 #import "AFHTTPSessionManager.h"
 #import <CommonCrypto/CommonDigest.h>
 

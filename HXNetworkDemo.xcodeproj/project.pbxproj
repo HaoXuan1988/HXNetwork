@@ -1,0 +1,685 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0AC3D254185A86A2E269A30D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24A406AA26812CD34AAABC45 /* libPods.a */; };
+		574801781C9A592200DBE870 /* WeatherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 574801771C9A592200DBE870 /* WeatherModel.m */; };
+		5775373F1C92897800A11ECC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5775373E1C92897800A11ECC /* main.m */; };
+		577537421C92897800A11ECC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 577537411C92897800A11ECC /* AppDelegate.m */; };
+		577537451C92897800A11ECC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 577537441C92897800A11ECC /* ViewController.m */; };
+		577537481C92897800A11ECC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 577537461C92897800A11ECC /* Main.storyboard */; };
+		5775374A1C92897800A11ECC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 577537491C92897800A11ECC /* Assets.xcassets */; };
+		5775374D1C92897800A11ECC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5775374B1C92897800A11ECC /* LaunchScreen.storyboard */; };
+		577537581C92897800A11ECC /* HXNetworkDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 577537571C92897800A11ECC /* HXNetworkDemoTests.m */; };
+		577537631C92897800A11ECC /* HXNetworkDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 577537621C92897800A11ECC /* HXNetworkDemoUITests.m */; };
+		57825F791CC73F5800BBD36C /* NSArray+HXExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 57825F671CC73F5800BBD36C /* NSArray+HXExtension.m */; };
+		57825F7A1CC73F5800BBD36C /* NSDate+HXExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 57825F691CC73F5800BBD36C /* NSDate+HXExtension.m */; };
+		57825F7B1CC73F5800BBD36C /* NSDictionary+HXExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 57825F6B1CC73F5800BBD36C /* NSDictionary+HXExtension.m */; };
+		57825F7C1CC73F5800BBD36C /* NSSet+HXExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 57825F6D1CC73F5800BBD36C /* NSSet+HXExtension.m */; };
+		57825F7D1CC73F5800BBD36C /* NSString+HXExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 57825F6F1CC73F5800BBD36C /* NSString+HXExtension.m */; };
+		57825F7E1CC73F5800BBD36C /* UIColor+HXExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 57825F711CC73F5800BBD36C /* UIColor+HXExtension.m */; };
+		57825F7F1CC73F5800BBD36C /* UIFont+HXExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 57825F731CC73F5800BBD36C /* UIFont+HXExtension.m */; };
+		57825F801CC73F5800BBD36C /* UIImage+HXExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 57825F751CC73F5800BBD36C /* UIImage+HXExtension.m */; };
+		57825F811CC73F5800BBD36C /* HXResponseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 57825F781CC73F5800BBD36C /* HXResponseManager.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		577537541C92897800A11ECC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 577537321C92897800A11ECC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 577537391C92897800A11ECC;
+			remoteInfo = HXNetworkDemo;
+		};
+		5775375F1C92897800A11ECC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 577537321C92897800A11ECC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 577537391C92897800A11ECC;
+			remoteInfo = HXNetworkDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		24A406AA26812CD34AAABC45 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		574801761C9A592200DBE870 /* WeatherModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherModel.h; sourceTree = "<group>"; };
+		574801771C9A592200DBE870 /* WeatherModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherModel.m; sourceTree = "<group>"; };
+		5775373A1C92897800A11ECC /* HXNetworkDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HXNetworkDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5775373E1C92897800A11ECC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		577537401C92897800A11ECC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		577537411C92897800A11ECC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		577537431C92897800A11ECC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		577537441C92897800A11ECC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		577537471C92897800A11ECC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		577537491C92897800A11ECC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5775374C1C92897800A11ECC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5775374E1C92897800A11ECC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		577537531C92897800A11ECC /* HXNetworkDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HXNetworkDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		577537571C92897800A11ECC /* HXNetworkDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HXNetworkDemoTests.m; sourceTree = "<group>"; };
+		577537591C92897800A11ECC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5775375E1C92897800A11ECC /* HXNetworkDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HXNetworkDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		577537621C92897800A11ECC /* HXNetworkDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HXNetworkDemoUITests.m; sourceTree = "<group>"; };
+		577537641C92897800A11ECC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		57825F651CC73F5800BBD36C /* HXExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXExtension.h; sourceTree = "<group>"; };
+		57825F661CC73F5800BBD36C /* NSArray+HXExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+HXExtension.h"; sourceTree = "<group>"; };
+		57825F671CC73F5800BBD36C /* NSArray+HXExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+HXExtension.m"; sourceTree = "<group>"; };
+		57825F681CC73F5800BBD36C /* NSDate+HXExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+HXExtension.h"; sourceTree = "<group>"; };
+		57825F691CC73F5800BBD36C /* NSDate+HXExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+HXExtension.m"; sourceTree = "<group>"; };
+		57825F6A1CC73F5800BBD36C /* NSDictionary+HXExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+HXExtension.h"; sourceTree = "<group>"; };
+		57825F6B1CC73F5800BBD36C /* NSDictionary+HXExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+HXExtension.m"; sourceTree = "<group>"; };
+		57825F6C1CC73F5800BBD36C /* NSSet+HXExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSSet+HXExtension.h"; sourceTree = "<group>"; };
+		57825F6D1CC73F5800BBD36C /* NSSet+HXExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSSet+HXExtension.m"; sourceTree = "<group>"; };
+		57825F6E1CC73F5800BBD36C /* NSString+HXExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HXExtension.h"; sourceTree = "<group>"; };
+		57825F6F1CC73F5800BBD36C /* NSString+HXExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HXExtension.m"; sourceTree = "<group>"; };
+		57825F701CC73F5800BBD36C /* UIColor+HXExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HXExtension.h"; sourceTree = "<group>"; };
+		57825F711CC73F5800BBD36C /* UIColor+HXExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HXExtension.m"; sourceTree = "<group>"; };
+		57825F721CC73F5800BBD36C /* UIFont+HXExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+HXExtension.h"; sourceTree = "<group>"; };
+		57825F731CC73F5800BBD36C /* UIFont+HXExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+HXExtension.m"; sourceTree = "<group>"; };
+		57825F741CC73F5800BBD36C /* UIImage+HXExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+HXExtension.h"; sourceTree = "<group>"; };
+		57825F751CC73F5800BBD36C /* UIImage+HXExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+HXExtension.m"; sourceTree = "<group>"; };
+		57825F761CC73F5800BBD36C /* HXNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXNetwork.h; sourceTree = "<group>"; };
+		57825F771CC73F5800BBD36C /* HXResponseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXResponseManager.h; sourceTree = "<group>"; };
+		57825F781CC73F5800BBD36C /* HXResponseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXResponseManager.m; sourceTree = "<group>"; };
+		CA7A9F4495123E2A38642F26 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		DAACC4F27F9C1CBB12CC164B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		577537371C92897800A11ECC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0AC3D254185A86A2E269A30D /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		577537501C92897800A11ECC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5775375B1C92897800A11ECC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		105A057E585AD5B57D29FC00 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CA7A9F4495123E2A38642F26 /* Pods.debug.xcconfig */,
+				DAACC4F27F9C1CBB12CC164B /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		577537311C92897800A11ECC = {
+			isa = PBXGroup;
+			children = (
+				57825F631CC73F5800BBD36C /* HXNetwork */,
+				5775373C1C92897800A11ECC /* HXNetworkDemo */,
+				577537561C92897800A11ECC /* HXNetworkDemoTests */,
+				577537611C92897800A11ECC /* HXNetworkDemoUITests */,
+				5775373B1C92897800A11ECC /* Products */,
+				105A057E585AD5B57D29FC00 /* Pods */,
+				C2CF88CDCD8D0C0D3F3CEF90 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		5775373B1C92897800A11ECC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5775373A1C92897800A11ECC /* HXNetworkDemo.app */,
+				577537531C92897800A11ECC /* HXNetworkDemoTests.xctest */,
+				5775375E1C92897800A11ECC /* HXNetworkDemoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5775373C1C92897800A11ECC /* HXNetworkDemo */ = {
+			isa = PBXGroup;
+			children = (
+				577537401C92897800A11ECC /* AppDelegate.h */,
+				577537411C92897800A11ECC /* AppDelegate.m */,
+				577537431C92897800A11ECC /* ViewController.h */,
+				577537441C92897800A11ECC /* ViewController.m */,
+				574801761C9A592200DBE870 /* WeatherModel.h */,
+				574801771C9A592200DBE870 /* WeatherModel.m */,
+				577537461C92897800A11ECC /* Main.storyboard */,
+				577537491C92897800A11ECC /* Assets.xcassets */,
+				5775374B1C92897800A11ECC /* LaunchScreen.storyboard */,
+				5775374E1C92897800A11ECC /* Info.plist */,
+				5775373D1C92897800A11ECC /* Supporting Files */,
+			);
+			path = HXNetworkDemo;
+			sourceTree = "<group>";
+		};
+		5775373D1C92897800A11ECC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5775373E1C92897800A11ECC /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		577537561C92897800A11ECC /* HXNetworkDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				577537571C92897800A11ECC /* HXNetworkDemoTests.m */,
+				577537591C92897800A11ECC /* Info.plist */,
+			);
+			path = HXNetworkDemoTests;
+			sourceTree = "<group>";
+		};
+		577537611C92897800A11ECC /* HXNetworkDemoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				577537621C92897800A11ECC /* HXNetworkDemoUITests.m */,
+				577537641C92897800A11ECC /* Info.plist */,
+			);
+			path = HXNetworkDemoUITests;
+			sourceTree = "<group>";
+		};
+		57825F631CC73F5800BBD36C /* HXNetwork */ = {
+			isa = PBXGroup;
+			children = (
+				57825F641CC73F5800BBD36C /* HXExtension */,
+				57825F761CC73F5800BBD36C /* HXNetwork.h */,
+				57825F771CC73F5800BBD36C /* HXResponseManager.h */,
+				57825F781CC73F5800BBD36C /* HXResponseManager.m */,
+			);
+			path = HXNetwork;
+			sourceTree = "<group>";
+		};
+		57825F641CC73F5800BBD36C /* HXExtension */ = {
+			isa = PBXGroup;
+			children = (
+				57825F651CC73F5800BBD36C /* HXExtension.h */,
+				57825F661CC73F5800BBD36C /* NSArray+HXExtension.h */,
+				57825F671CC73F5800BBD36C /* NSArray+HXExtension.m */,
+				57825F681CC73F5800BBD36C /* NSDate+HXExtension.h */,
+				57825F691CC73F5800BBD36C /* NSDate+HXExtension.m */,
+				57825F6A1CC73F5800BBD36C /* NSDictionary+HXExtension.h */,
+				57825F6B1CC73F5800BBD36C /* NSDictionary+HXExtension.m */,
+				57825F6C1CC73F5800BBD36C /* NSSet+HXExtension.h */,
+				57825F6D1CC73F5800BBD36C /* NSSet+HXExtension.m */,
+				57825F6E1CC73F5800BBD36C /* NSString+HXExtension.h */,
+				57825F6F1CC73F5800BBD36C /* NSString+HXExtension.m */,
+				57825F701CC73F5800BBD36C /* UIColor+HXExtension.h */,
+				57825F711CC73F5800BBD36C /* UIColor+HXExtension.m */,
+				57825F721CC73F5800BBD36C /* UIFont+HXExtension.h */,
+				57825F731CC73F5800BBD36C /* UIFont+HXExtension.m */,
+				57825F741CC73F5800BBD36C /* UIImage+HXExtension.h */,
+				57825F751CC73F5800BBD36C /* UIImage+HXExtension.m */,
+			);
+			path = HXExtension;
+			sourceTree = "<group>";
+		};
+		C2CF88CDCD8D0C0D3F3CEF90 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				24A406AA26812CD34AAABC45 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		577537391C92897800A11ECC /* HXNetworkDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 577537671C92897800A11ECC /* Build configuration list for PBXNativeTarget "HXNetworkDemo" */;
+			buildPhases = (
+				72621BEDE1F25AA3C77C7475 /* Check Pods Manifest.lock */,
+				577537361C92897800A11ECC /* Sources */,
+				577537371C92897800A11ECC /* Frameworks */,
+				577537381C92897800A11ECC /* Resources */,
+				56958E72891414B57DAC3EF1 /* Embed Pods Frameworks */,
+				01B3804E3C66FD98BCEDF7B7 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HXNetworkDemo;
+			productName = HXNetworkDemo;
+			productReference = 5775373A1C92897800A11ECC /* HXNetworkDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		577537521C92897800A11ECC /* HXNetworkDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5775376A1C92897800A11ECC /* Build configuration list for PBXNativeTarget "HXNetworkDemoTests" */;
+			buildPhases = (
+				5775374F1C92897800A11ECC /* Sources */,
+				577537501C92897800A11ECC /* Frameworks */,
+				577537511C92897800A11ECC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				577537551C92897800A11ECC /* PBXTargetDependency */,
+			);
+			name = HXNetworkDemoTests;
+			productName = HXNetworkDemoTests;
+			productReference = 577537531C92897800A11ECC /* HXNetworkDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5775375D1C92897800A11ECC /* HXNetworkDemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5775376D1C92897800A11ECC /* Build configuration list for PBXNativeTarget "HXNetworkDemoUITests" */;
+			buildPhases = (
+				5775375A1C92897800A11ECC /* Sources */,
+				5775375B1C92897800A11ECC /* Frameworks */,
+				5775375C1C92897800A11ECC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				577537601C92897800A11ECC /* PBXTargetDependency */,
+			);
+			name = HXNetworkDemoUITests;
+			productName = HXNetworkDemoUITests;
+			productReference = 5775375E1C92897800A11ECC /* HXNetworkDemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		577537321C92897800A11ECC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "吕浩轩";
+				TargetAttributes = {
+					577537391C92897800A11ECC = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+					577537521C92897800A11ECC = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = 577537391C92897800A11ECC;
+					};
+					5775375D1C92897800A11ECC = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = 577537391C92897800A11ECC;
+					};
+				};
+			};
+			buildConfigurationList = 577537351C92897800A11ECC /* Build configuration list for PBXProject "HXNetworkDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 577537311C92897800A11ECC;
+			productRefGroup = 5775373B1C92897800A11ECC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				577537391C92897800A11ECC /* HXNetworkDemo */,
+				577537521C92897800A11ECC /* HXNetworkDemoTests */,
+				5775375D1C92897800A11ECC /* HXNetworkDemoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		577537381C92897800A11ECC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5775374D1C92897800A11ECC /* LaunchScreen.storyboard in Resources */,
+				5775374A1C92897800A11ECC /* Assets.xcassets in Resources */,
+				577537481C92897800A11ECC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		577537511C92897800A11ECC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5775375C1C92897800A11ECC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		01B3804E3C66FD98BCEDF7B7 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		56958E72891414B57DAC3EF1 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		72621BEDE1F25AA3C77C7475 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		577537361C92897800A11ECC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				57825F7D1CC73F5800BBD36C /* NSString+HXExtension.m in Sources */,
+				57825F811CC73F5800BBD36C /* HXResponseManager.m in Sources */,
+				57825F801CC73F5800BBD36C /* UIImage+HXExtension.m in Sources */,
+				57825F7A1CC73F5800BBD36C /* NSDate+HXExtension.m in Sources */,
+				577537451C92897800A11ECC /* ViewController.m in Sources */,
+				577537421C92897800A11ECC /* AppDelegate.m in Sources */,
+				57825F7C1CC73F5800BBD36C /* NSSet+HXExtension.m in Sources */,
+				57825F7F1CC73F5800BBD36C /* UIFont+HXExtension.m in Sources */,
+				574801781C9A592200DBE870 /* WeatherModel.m in Sources */,
+				57825F791CC73F5800BBD36C /* NSArray+HXExtension.m in Sources */,
+				57825F7E1CC73F5800BBD36C /* UIColor+HXExtension.m in Sources */,
+				57825F7B1CC73F5800BBD36C /* NSDictionary+HXExtension.m in Sources */,
+				5775373F1C92897800A11ECC /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5775374F1C92897800A11ECC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				577537581C92897800A11ECC /* HXNetworkDemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5775375A1C92897800A11ECC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				577537631C92897800A11ECC /* HXNetworkDemoUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		577537551C92897800A11ECC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 577537391C92897800A11ECC /* HXNetworkDemo */;
+			targetProxy = 577537541C92897800A11ECC /* PBXContainerItemProxy */;
+		};
+		577537601C92897800A11ECC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 577537391C92897800A11ECC /* HXNetworkDemo */;
+			targetProxy = 5775375F1C92897800A11ECC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		577537461C92897800A11ECC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				577537471C92897800A11ECC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5775374B1C92897800A11ECC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5775374C1C92897800A11ECC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		577537651C92897800A11ECC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		577537661C92897800A11ECC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		577537681C92897800A11ECC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA7A9F4495123E2A38642F26 /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = HXNetworkDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = HaoXuan.HXNetworkDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		577537691C92897800A11ECC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DAACC4F27F9C1CBB12CC164B /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = HXNetworkDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = HaoXuan.HXNetworkDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		5775376B1C92897800A11ECC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = HXNetworkDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = HaoXuan.HXNetworkDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HXNetworkDemo.app/HXNetworkDemo";
+			};
+			name = Debug;
+		};
+		5775376C1C92897800A11ECC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = HXNetworkDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = HaoXuan.HXNetworkDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HXNetworkDemo.app/HXNetworkDemo";
+			};
+			name = Release;
+		};
+		5775376E1C92897800A11ECC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = HXNetworkDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = HaoXuan.HXNetworkDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = HXNetworkDemo;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		5775376F1C92897800A11ECC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = HXNetworkDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = HaoXuan.HXNetworkDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = HXNetworkDemo;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		577537351C92897800A11ECC /* Build configuration list for PBXProject "HXNetworkDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				577537651C92897800A11ECC /* Debug */,
+				577537661C92897800A11ECC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		577537671C92897800A11ECC /* Build configuration list for PBXNativeTarget "HXNetworkDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				577537681C92897800A11ECC /* Debug */,
+				577537691C92897800A11ECC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5775376A1C92897800A11ECC /* Build configuration list for PBXNativeTarget "HXNetworkDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5775376B1C92897800A11ECC /* Debug */,
+				5775376C1C92897800A11ECC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5775376D1C92897800A11ECC /* Build configuration list for PBXNativeTarget "HXNetworkDemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5775376E1C92897800A11ECC /* Debug */,
+				5775376F1C92897800A11ECC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 577537321C92897800A11ECC /* Project object */;
+}

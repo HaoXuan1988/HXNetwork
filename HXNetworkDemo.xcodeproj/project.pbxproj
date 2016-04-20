@@ -17,15 +17,15 @@
 		5775374D1C92897800A11ECC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5775374B1C92897800A11ECC /* LaunchScreen.storyboard */; };
 		577537581C92897800A11ECC /* HXNetworkDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 577537571C92897800A11ECC /* HXNetworkDemoTests.m */; };
 		577537631C92897800A11ECC /* HXNetworkDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 577537621C92897800A11ECC /* HXNetworkDemoUITests.m */; };
-		57825F791CC73F5800BBD36C /* NSArray+HXExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 57825F671CC73F5800BBD36C /* NSArray+HXExtension.m */; };
-		57825F7A1CC73F5800BBD36C /* NSDate+HXExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 57825F691CC73F5800BBD36C /* NSDate+HXExtension.m */; };
-		57825F7B1CC73F5800BBD36C /* NSDictionary+HXExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 57825F6B1CC73F5800BBD36C /* NSDictionary+HXExtension.m */; };
-		57825F7C1CC73F5800BBD36C /* NSSet+HXExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 57825F6D1CC73F5800BBD36C /* NSSet+HXExtension.m */; };
-		57825F7D1CC73F5800BBD36C /* NSString+HXExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 57825F6F1CC73F5800BBD36C /* NSString+HXExtension.m */; };
-		57825F7E1CC73F5800BBD36C /* UIColor+HXExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 57825F711CC73F5800BBD36C /* UIColor+HXExtension.m */; };
-		57825F7F1CC73F5800BBD36C /* UIFont+HXExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 57825F731CC73F5800BBD36C /* UIFont+HXExtension.m */; };
-		57825F801CC73F5800BBD36C /* UIImage+HXExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 57825F751CC73F5800BBD36C /* UIImage+HXExtension.m */; };
-		57825F811CC73F5800BBD36C /* HXResponseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 57825F781CC73F5800BBD36C /* HXResponseManager.m */; };
+		57825F981CC7563500BBD36C /* NSArray+HXExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 57825F861CC7563500BBD36C /* NSArray+HXExtension.m */; };
+		57825F991CC7563500BBD36C /* NSDate+HXExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 57825F881CC7563500BBD36C /* NSDate+HXExtension.m */; };
+		57825F9A1CC7563500BBD36C /* NSDictionary+HXExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 57825F8A1CC7563500BBD36C /* NSDictionary+HXExtension.m */; };
+		57825F9B1CC7563500BBD36C /* NSSet+HXExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 57825F8C1CC7563500BBD36C /* NSSet+HXExtension.m */; };
+		57825F9C1CC7563500BBD36C /* NSString+HXExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 57825F8E1CC7563500BBD36C /* NSString+HXExtension.m */; };
+		57825F9D1CC7563500BBD36C /* UIColor+HXExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 57825F901CC7563500BBD36C /* UIColor+HXExtension.m */; };
+		57825F9E1CC7563500BBD36C /* UIFont+HXExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 57825F921CC7563500BBD36C /* UIFont+HXExtension.m */; };
+		57825F9F1CC7563500BBD36C /* UIImage+HXExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 57825F941CC7563500BBD36C /* UIImage+HXExtension.m */; };
+		57825FA01CC7563500BBD36C /* HXResponseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 57825F971CC7563500BBD36C /* HXResponseManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,26 +65,26 @@
 		5775375E1C92897800A11ECC /* HXNetworkDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HXNetworkDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		577537621C92897800A11ECC /* HXNetworkDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HXNetworkDemoUITests.m; sourceTree = "<group>"; };
 		577537641C92897800A11ECC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		57825F651CC73F5800BBD36C /* HXExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXExtension.h; sourceTree = "<group>"; };
-		57825F661CC73F5800BBD36C /* NSArray+HXExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+HXExtension.h"; sourceTree = "<group>"; };
-		57825F671CC73F5800BBD36C /* NSArray+HXExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+HXExtension.m"; sourceTree = "<group>"; };
-		57825F681CC73F5800BBD36C /* NSDate+HXExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+HXExtension.h"; sourceTree = "<group>"; };
-		57825F691CC73F5800BBD36C /* NSDate+HXExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+HXExtension.m"; sourceTree = "<group>"; };
-		57825F6A1CC73F5800BBD36C /* NSDictionary+HXExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+HXExtension.h"; sourceTree = "<group>"; };
-		57825F6B1CC73F5800BBD36C /* NSDictionary+HXExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+HXExtension.m"; sourceTree = "<group>"; };
-		57825F6C1CC73F5800BBD36C /* NSSet+HXExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSSet+HXExtension.h"; sourceTree = "<group>"; };
-		57825F6D1CC73F5800BBD36C /* NSSet+HXExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSSet+HXExtension.m"; sourceTree = "<group>"; };
-		57825F6E1CC73F5800BBD36C /* NSString+HXExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HXExtension.h"; sourceTree = "<group>"; };
-		57825F6F1CC73F5800BBD36C /* NSString+HXExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HXExtension.m"; sourceTree = "<group>"; };
-		57825F701CC73F5800BBD36C /* UIColor+HXExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HXExtension.h"; sourceTree = "<group>"; };
-		57825F711CC73F5800BBD36C /* UIColor+HXExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HXExtension.m"; sourceTree = "<group>"; };
-		57825F721CC73F5800BBD36C /* UIFont+HXExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+HXExtension.h"; sourceTree = "<group>"; };
-		57825F731CC73F5800BBD36C /* UIFont+HXExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+HXExtension.m"; sourceTree = "<group>"; };
-		57825F741CC73F5800BBD36C /* UIImage+HXExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+HXExtension.h"; sourceTree = "<group>"; };
-		57825F751CC73F5800BBD36C /* UIImage+HXExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+HXExtension.m"; sourceTree = "<group>"; };
-		57825F761CC73F5800BBD36C /* HXNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXNetwork.h; sourceTree = "<group>"; };
-		57825F771CC73F5800BBD36C /* HXResponseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXResponseManager.h; sourceTree = "<group>"; };
-		57825F781CC73F5800BBD36C /* HXResponseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXResponseManager.m; sourceTree = "<group>"; };
+		57825F841CC7563500BBD36C /* HXExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXExtension.h; sourceTree = "<group>"; };
+		57825F851CC7563500BBD36C /* NSArray+HXExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+HXExtension.h"; sourceTree = "<group>"; };
+		57825F861CC7563500BBD36C /* NSArray+HXExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+HXExtension.m"; sourceTree = "<group>"; };
+		57825F871CC7563500BBD36C /* NSDate+HXExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+HXExtension.h"; sourceTree = "<group>"; };
+		57825F881CC7563500BBD36C /* NSDate+HXExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+HXExtension.m"; sourceTree = "<group>"; };
+		57825F891CC7563500BBD36C /* NSDictionary+HXExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+HXExtension.h"; sourceTree = "<group>"; };
+		57825F8A1CC7563500BBD36C /* NSDictionary+HXExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+HXExtension.m"; sourceTree = "<group>"; };
+		57825F8B1CC7563500BBD36C /* NSSet+HXExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSSet+HXExtension.h"; sourceTree = "<group>"; };
+		57825F8C1CC7563500BBD36C /* NSSet+HXExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSSet+HXExtension.m"; sourceTree = "<group>"; };
+		57825F8D1CC7563500BBD36C /* NSString+HXExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HXExtension.h"; sourceTree = "<group>"; };
+		57825F8E1CC7563500BBD36C /* NSString+HXExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HXExtension.m"; sourceTree = "<group>"; };
+		57825F8F1CC7563500BBD36C /* UIColor+HXExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HXExtension.h"; sourceTree = "<group>"; };
+		57825F901CC7563500BBD36C /* UIColor+HXExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HXExtension.m"; sourceTree = "<group>"; };
+		57825F911CC7563500BBD36C /* UIFont+HXExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+HXExtension.h"; sourceTree = "<group>"; };
+		57825F921CC7563500BBD36C /* UIFont+HXExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+HXExtension.m"; sourceTree = "<group>"; };
+		57825F931CC7563500BBD36C /* UIImage+HXExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+HXExtension.h"; sourceTree = "<group>"; };
+		57825F941CC7563500BBD36C /* UIImage+HXExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+HXExtension.m"; sourceTree = "<group>"; };
+		57825F951CC7563500BBD36C /* HXNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXNetwork.h; sourceTree = "<group>"; };
+		57825F961CC7563500BBD36C /* HXResponseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXResponseManager.h; sourceTree = "<group>"; };
+		57825F971CC7563500BBD36C /* HXResponseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXResponseManager.m; sourceTree = "<group>"; };
 		CA7A9F4495123E2A38642F26 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		DAACC4F27F9C1CBB12CC164B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -127,7 +127,7 @@
 		577537311C92897800A11ECC = {
 			isa = PBXGroup;
 			children = (
-				57825F631CC73F5800BBD36C /* HXNetwork */,
+				57825F821CC7563500BBD36C /* HXNetwork */,
 				5775373C1C92897800A11ECC /* HXNetworkDemo */,
 				577537561C92897800A11ECC /* HXNetworkDemoTests */,
 				577537611C92897800A11ECC /* HXNetworkDemoUITests */,
@@ -191,37 +191,37 @@
 			path = HXNetworkDemoUITests;
 			sourceTree = "<group>";
 		};
-		57825F631CC73F5800BBD36C /* HXNetwork */ = {
+		57825F821CC7563500BBD36C /* HXNetwork */ = {
 			isa = PBXGroup;
 			children = (
-				57825F641CC73F5800BBD36C /* HXExtension */,
-				57825F761CC73F5800BBD36C /* HXNetwork.h */,
-				57825F771CC73F5800BBD36C /* HXResponseManager.h */,
-				57825F781CC73F5800BBD36C /* HXResponseManager.m */,
+				57825F831CC7563500BBD36C /* HXExtension */,
+				57825F951CC7563500BBD36C /* HXNetwork.h */,
+				57825F961CC7563500BBD36C /* HXResponseManager.h */,
+				57825F971CC7563500BBD36C /* HXResponseManager.m */,
 			);
 			path = HXNetwork;
 			sourceTree = "<group>";
 		};
-		57825F641CC73F5800BBD36C /* HXExtension */ = {
+		57825F831CC7563500BBD36C /* HXExtension */ = {
 			isa = PBXGroup;
 			children = (
-				57825F651CC73F5800BBD36C /* HXExtension.h */,
-				57825F661CC73F5800BBD36C /* NSArray+HXExtension.h */,
-				57825F671CC73F5800BBD36C /* NSArray+HXExtension.m */,
-				57825F681CC73F5800BBD36C /* NSDate+HXExtension.h */,
-				57825F691CC73F5800BBD36C /* NSDate+HXExtension.m */,
-				57825F6A1CC73F5800BBD36C /* NSDictionary+HXExtension.h */,
-				57825F6B1CC73F5800BBD36C /* NSDictionary+HXExtension.m */,
-				57825F6C1CC73F5800BBD36C /* NSSet+HXExtension.h */,
-				57825F6D1CC73F5800BBD36C /* NSSet+HXExtension.m */,
-				57825F6E1CC73F5800BBD36C /* NSString+HXExtension.h */,
-				57825F6F1CC73F5800BBD36C /* NSString+HXExtension.m */,
-				57825F701CC73F5800BBD36C /* UIColor+HXExtension.h */,
-				57825F711CC73F5800BBD36C /* UIColor+HXExtension.m */,
-				57825F721CC73F5800BBD36C /* UIFont+HXExtension.h */,
-				57825F731CC73F5800BBD36C /* UIFont+HXExtension.m */,
-				57825F741CC73F5800BBD36C /* UIImage+HXExtension.h */,
-				57825F751CC73F5800BBD36C /* UIImage+HXExtension.m */,
+				57825F841CC7563500BBD36C /* HXExtension.h */,
+				57825F851CC7563500BBD36C /* NSArray+HXExtension.h */,
+				57825F861CC7563500BBD36C /* NSArray+HXExtension.m */,
+				57825F871CC7563500BBD36C /* NSDate+HXExtension.h */,
+				57825F881CC7563500BBD36C /* NSDate+HXExtension.m */,
+				57825F891CC7563500BBD36C /* NSDictionary+HXExtension.h */,
+				57825F8A1CC7563500BBD36C /* NSDictionary+HXExtension.m */,
+				57825F8B1CC7563500BBD36C /* NSSet+HXExtension.h */,
+				57825F8C1CC7563500BBD36C /* NSSet+HXExtension.m */,
+				57825F8D1CC7563500BBD36C /* NSString+HXExtension.h */,
+				57825F8E1CC7563500BBD36C /* NSString+HXExtension.m */,
+				57825F8F1CC7563500BBD36C /* UIColor+HXExtension.h */,
+				57825F901CC7563500BBD36C /* UIColor+HXExtension.m */,
+				57825F911CC7563500BBD36C /* UIFont+HXExtension.h */,
+				57825F921CC7563500BBD36C /* UIFont+HXExtension.m */,
+				57825F931CC7563500BBD36C /* UIImage+HXExtension.h */,
+				57825F941CC7563500BBD36C /* UIImage+HXExtension.m */,
 			);
 			path = HXExtension;
 			sourceTree = "<group>";
@@ -415,18 +415,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57825F7D1CC73F5800BBD36C /* NSString+HXExtension.m in Sources */,
-				57825F811CC73F5800BBD36C /* HXResponseManager.m in Sources */,
-				57825F801CC73F5800BBD36C /* UIImage+HXExtension.m in Sources */,
-				57825F7A1CC73F5800BBD36C /* NSDate+HXExtension.m in Sources */,
+				57825F9C1CC7563500BBD36C /* NSString+HXExtension.m in Sources */,
+				57825FA01CC7563500BBD36C /* HXResponseManager.m in Sources */,
+				57825F9F1CC7563500BBD36C /* UIImage+HXExtension.m in Sources */,
+				57825F991CC7563500BBD36C /* NSDate+HXExtension.m in Sources */,
 				577537451C92897800A11ECC /* ViewController.m in Sources */,
 				577537421C92897800A11ECC /* AppDelegate.m in Sources */,
-				57825F7C1CC73F5800BBD36C /* NSSet+HXExtension.m in Sources */,
-				57825F7F1CC73F5800BBD36C /* UIFont+HXExtension.m in Sources */,
+				57825F9B1CC7563500BBD36C /* NSSet+HXExtension.m in Sources */,
+				57825F9E1CC7563500BBD36C /* UIFont+HXExtension.m in Sources */,
 				574801781C9A592200DBE870 /* WeatherModel.m in Sources */,
-				57825F791CC73F5800BBD36C /* NSArray+HXExtension.m in Sources */,
-				57825F7E1CC73F5800BBD36C /* UIColor+HXExtension.m in Sources */,
-				57825F7B1CC73F5800BBD36C /* NSDictionary+HXExtension.m in Sources */,
+				57825F981CC7563500BBD36C /* NSArray+HXExtension.m in Sources */,
+				57825F9D1CC7563500BBD36C /* UIColor+HXExtension.m in Sources */,
+				57825F9A1CC7563500BBD36C /* NSDictionary+HXExtension.m in Sources */,
 				5775373F1C92897800A11ECC /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

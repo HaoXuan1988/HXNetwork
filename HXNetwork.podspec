@@ -27,7 +27,7 @@ Pod::Spec.new do |s|
   s.description  = <<-DESC
                    DESC
 
-  s.homepage     = “基于 AFNetworking 3.0.4 封装的常用 API.”
+  s.homepage     = “https://github.com/HaoXuan1988/HXNetwork”
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -67,7 +67,7 @@ Pod::Spec.new do |s|
    s.platform     = :ios, “7.0”
 
   #  When using multiple platforms
-  # s.ios.deployment_target = "5.0"
+   s.ios.deployment_target = “7.0”
   # s.osx.deployment_target = "10.7"
   # s.watchos.deployment_target = "2.0"
   # s.tvos.deployment_target = "9.0"

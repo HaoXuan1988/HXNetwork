@@ -433,8 +433,8 @@ static NSNumberFormatter *numberFormatter_;
     } else if ([self isKindOfClass:[NSData class]]) {
         return (NSData *)self;
     }
-
-    return [NSJSONSerialization dataWithJSONObject:[self mj_JSONObject] options:NSJSONWritingPrettyPrinted error:nil];
+    
+    return [NSJSONSerialization dataWithJSONObject:[self mj_JSONObject] options:kNilOptions error:nil];
 }
 
 - (id)mj_JSONObject
@@ -455,7 +455,7 @@ static NSNumberFormatter *numberFormatter_;
     } else if ([self isKindOfClass:[NSData class]]) {
         return [[NSString alloc] initWithData:(NSData *)self encoding:NSUTF8StringEncoding];
     }
-
+    
     return [[NSString alloc] initWithData:[self mj_JSONData] encoding:NSUTF8StringEncoding];
 }
 @end

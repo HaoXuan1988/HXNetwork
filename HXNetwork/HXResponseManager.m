@@ -7,8 +7,8 @@
 //
 
 #import "HXResponseManager.h"
-#import <AFNetworking.h>
-#import <AFNetworkActivityIndicatorManager.h>
+#import "AFNetworking.h"
+#import "AFNetworkActivityIndicatorManager.h"
 #import "AFHTTPSessionManager.h"
 #import <CommonCrypto/CommonDigest.h>
 
@@ -65,11 +65,12 @@ static NSString *mimeType_key = @"mimeType";
 
 @implementation HXResponseManager
 
-+ (nonnull HXResponseManager *)manager {
-    static HXResponseManager *sharedInstance = nil;
++ (nonnull instancetype)manager {
+    
+    static HXResponseManager *sharedInstance;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedInstance = [[HXResponseManager alloc] init];
+        sharedInstance = [[self alloc] init];
     });
     return sharedInstance;
 }
@@ -106,19 +107,19 @@ static NSString *mimeType_key = @"mimeType";
     hx_httpHeaders = httpHeaders;
 }
 
--(void)configFileData_key:(NSString *)key {
+-(void)configFileData_key:(nonnull NSString *)key {
     fileData_key = key;
 }
 
-- (void)configName_key:(NSString *)key {
+- (void)configName_key:(nonnull NSString *)key {
     name_key = key;
 }
 
-- (void)configFileName_key:(NSString *)key {
+- (void)configFileName_key:(nonnull NSString *)key {
     fileName_key = key;
 }
 
-- (void)configMimeType_key:(NSString *)key {
+- (void)configMimeType_key:(nonnull NSString *)key {
     mimeType_key = key;
 }
 
@@ -145,9 +146,9 @@ static inline NSString *cachePath() {
         [[NSFileManager defaultManager] removeItemAtPath:directoryPath error:&error];
         
         if (error) {
-            SLog(@"HXNetwork clear caches error: %@", error);
+            SLog(@" 清 除 缓 存 错 误: %@", error.localizedDescription);
         } else {
-            SLog(@"HXNetwork clear caches ok");
+            SLog(@" 清 除 缓 存 完 成");
         }
     }
 }
@@ -245,24 +246,13 @@ static inline NSString *cachePath() {
                                   success:(nullable HXResponseSuccess)success
                                      fail:(nullable HXResponseFail)fail {
     
-    if (hx_isCache) {
-        return [self _requestWithUrl:url
-                           httpMedth:HXRequestMethodGet
-                              params:params
-                        networkCache:YES
-                            progress:progress
-                             success:success
-                                fail:fail];
-    }else{
-        return [self _requestWithUrl:url
-                           httpMedth:HXRequestMethodGet
-                              params:params
-                        networkCache:NO
-                            progress:progress
-                             success:success
-                                fail:fail];
-    }
-    hx_isCache = NO;
+    return [self _requestWithUrl:url
+                       httpMedth:HXRequestMethodGet
+                          params:params
+                    networkCache:hx_isCache
+                        progress:progress
+                         success:success
+                            fail:fail];
 }
 
 - (nullable HXURLSessionTask *)postWithUrl:(nullable NSString *)url
@@ -281,24 +271,14 @@ static inline NSString *cachePath() {
                                   progress:(nullable HXPostProgress)progress
                                    success:(nullable HXResponseSuccess)success
                                       fail:(nullable HXResponseFail)fail {
-    if (hx_isCache) {
-        return [self _requestWithUrl:url
-                           httpMedth:HXRequestMethodPost
-                              params:params
-                        networkCache:YES
-                            progress:progress
-                             success:success
-                                fail:fail];
-    }else{
-        return [self _requestWithUrl:url
-                           httpMedth:HXRequestMethodPost
-                              params:params
-                        networkCache:NO
-                            progress:progress
-                             success:success
-                                fail:fail];
-    }
-    hx_isCache = NO;
+    
+    return [self _requestWithUrl:url
+                       httpMedth:HXRequestMethodPost
+                          params:params
+                    networkCache:hx_isCache
+                        progress:progress
+                         success:success
+                            fail:fail];
 }
 
 - (HXURLSessionTask *)_requestWithUrl:(nullable NSString *)url
@@ -320,7 +300,9 @@ static inline NSString *cachePath() {
         return nil;
     }
     
-    NSURLSessionTask *session = nil;
+    /**
+     *  这里只有 GET 和 POST 添加了缓存机制
+     */
     if (httpMethod == HXRequestMethodGet || httpMethod == HXRequestMethodPost) {
         /**
          *  获取缓存
@@ -329,109 +311,145 @@ static inline NSString *cachePath() {
             
             id response = [self cahceResponseWithURL:url parameters:params];
             if (response) {
-                if (success) {
-                    [self successResponse:response callback:success];
+                self.responseSuccess = success;
+                if (self.responseSuccess) {
+                    self.responseSuccess(nil, [self tryToParseData:response]);
                 }
             }
         }
     }
     
-    if (httpMethod == HXRequestMethodGet) {
-        session = [manager GET:url parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
-            if (progress) {
-                progress(downloadProgress.completedUnitCount, downloadProgress.totalUnitCount);
-            }
-        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            [self successResponse:responseObject callback:success];
-            [self cacheResponseObject:responseObject request:task.currentRequest  parameters:params isCache:networkCache];
-            [self logWithSuccessResponse:responseObject url:task.response.URL.absoluteString params:params];
-            [[self allTasks] removeObject:task];
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            if (fail) {
-                fail(error);
-            }
-            [self logWithFailError:error url:url params:params];
-            [[self allTasks] removeObject:task];
-        }];
-    } else if (httpMethod == HXRequestMethodPost) {
-        session = [manager POST:url parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
-            if (progress) {
-                progress(downloadProgress.completedUnitCount, downloadProgress.totalUnitCount);
-            }
-        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            [self successResponse:responseObject callback:success];
-            [self cacheResponseObject:responseObject request:task.currentRequest  parameters:params isCache:networkCache];
-            [self logWithSuccessResponse:responseObject url:task.response.URL.absoluteString params:params];
-            [[self allTasks] removeObject:task];
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            if (fail) {
-                fail(error);
-            }
-            [self logWithFailError:error url:url params:params];
-            [[self allTasks] removeObject:task];
-        }];
-    } else if (httpMethod == HXRequestMethodHead) {
-        session = [manager HEAD:url parameters:params success:^(NSURLSessionDataTask * _Nonnull task) {
-            [self successResponse:task callback:success];
-            [self logWithSuccessResponse:nil url:task.response.URL.absoluteString params:params];
-            [[self allTasks] removeObject:task];
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            if (fail) {
-                fail(error);
-            }
-            [self logWithFailError:error url:url params:params];
-            [[self allTasks] removeObject:task];
-        }];
-    } else if (httpMethod == HXRequestMethodPut) {
-        session = [manager PUT:url parameters:params success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            [self successResponse:responseObject callback:success];
-            [self logWithSuccessResponse:responseObject url:task.response.URL.absoluteString params:params];
-            [[self allTasks] removeObject:task];
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            if (fail) {
-                fail(error);
-            }
-            [self logWithFailError:error url:url params:params];
-            [[self allTasks] removeObject:task];
-        }];
-    } else if (httpMethod == HXRequestMethodDelete) {
-        session = [manager DELETE:url parameters:params success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            [self successResponse:responseObject callback:success];
-            [self logWithSuccessResponse:responseObject url:task.response.URL.absoluteString params:params];
-            [[self allTasks] removeObject:task];
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            if (fail) {
-                fail(error);
-            }
-            [self logWithFailError:error url:url params:params];
-            [[self allTasks] removeObject:task];
-        }];
-    } else if (httpMethod == HXRequestMethodPatch) {
-        session = [manager PATCH:url parameters:params success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            [self successResponse:responseObject callback:success];
-            [self logWithSuccessResponse:responseObject url:task.response.URL.absoluteString params:params];
-            [[self allTasks] removeObject:task];
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            if (fail) {
-                fail(error);
-            }
-            [self logWithFailError:error url:url params:params];
-            [[self allTasks] removeObject:task];
-        }];
+    NSURLSessionTask *session;
+    
+    switch (httpMethod) {
+        case HXRequestMethodGet: {
+            
+            session = [manager GET:url parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
+                if (progress) {
+                    progress(downloadProgress.completedUnitCount, downloadProgress.totalUnitCount);
+                }
+            } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                [self successResponse:responseObject task:task callback:success];
+                
+                /**
+                 *  存储数据
+                 */
+                [self cacheResponseObject:responseObject request:task.currentRequest  parameters:params isCache:networkCache];
+                
+                [self logWithSuccessResponse:responseObject url:task.response.URL.absoluteString params:params];
+                [[self allTasks] removeObject:task];
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                if (fail) {
+                    fail(error);
+                }
+                [self logWithFailError:error url:url params:params];
+                [[self allTasks] removeObject:task];
+            }];
+            
+            break;
+        }
+        case HXRequestMethodPost: {
+            
+            session = [manager POST:url parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
+                if (progress) {
+                    progress(downloadProgress.completedUnitCount, downloadProgress.totalUnitCount);
+                }
+            } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                [self successResponse:responseObject task:task callback:success];
+                
+                /**
+                 *  存储数据
+                 */
+                [self cacheResponseObject:responseObject request:task.currentRequest  parameters:params isCache:networkCache];
+                
+                [self logWithSuccessResponse:responseObject url:task.response.URL.absoluteString params:params];
+                [[self allTasks] removeObject:task];
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                if (fail) {
+                    fail(error);
+                }
+                [self logWithFailError:error url:url params:params];
+                [[self allTasks] removeObject:task];
+            }];
+            
+            break;
+        }
+        case HXRequestMethodHead: {
+            
+            session = [manager HEAD:url parameters:params success:^(NSURLSessionDataTask * _Nonnull task) {
+                [self successResponse:nil task:task callback:success];
+                [self logWithSuccessResponse:nil url:task.response.URL.absoluteString params:params];
+                [[self allTasks] removeObject:task];
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                if (fail) {
+                    fail(error);
+                }
+                [self logWithFailError:error url:url params:params];
+                [[self allTasks] removeObject:task];
+            }];
+            
+            break;
+        }
+        case HXRequestMethodPut: {
+            
+            session = [manager PUT:url parameters:params success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                [self successResponse:responseObject task:task callback:success];
+                [self logWithSuccessResponse:responseObject url:task.response.URL.absoluteString params:params];
+                [[self allTasks] removeObject:task];
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                if (fail) {
+                    fail(error);
+                }
+                [self logWithFailError:error url:url params:params];
+                [[self allTasks] removeObject:task];
+            }];
+            
+            break;
+        }
+        case HXRequestMethodDelete: {
+            
+            session = [manager DELETE:url parameters:params success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                [self successResponse:responseObject task:task callback:success];
+                [self logWithSuccessResponse:responseObject url:task.response.URL.absoluteString params:params];
+                [[self allTasks] removeObject:task];
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                if (fail) {
+                    fail(error);
+                }
+                [self logWithFailError:error url:url params:params];
+                [[self allTasks] removeObject:task];
+            }];
+            
+            break;
+        }
+        case HXRequestMethodPatch: {
+            
+            session = [manager PATCH:url parameters:params success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                [self successResponse:responseObject task:task callback:success];
+                [self logWithSuccessResponse:responseObject url:task.response.URL.absoluteString params:params];
+                [[self allTasks] removeObject:task];
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                if (fail) {
+                    fail(error);
+                }
+                [self logWithFailError:error url:url params:params];
+                [[self allTasks] removeObject:task];
+            }];
+            
+            break;
+        }
+        default:
+            break;
     }
-    
-    
-    //恢复默认
-    hx_httpHeaders = nil;
-    hx_shouldAutoEncode = YES;
-    hx_isCache = NO;
-    hx_responseMethod = HXResponseMethodJSON;
-    hx_requestSerializerMethod  = HXRequestSerializerMethodHTTP;
     
     if (session) {
         [[self allTasks] addObject:session];
     }
     
+    /**
+     *  恢复默认
+     */
+    [self restoreDefaults];
     return session;
 }
 
@@ -476,7 +494,7 @@ static inline NSString *cachePath() {
             [self clearCompletionBlock];
             HXLog(@" >>>>——————————> 💔 上 传 失 败 💔 <————————————<<<<\n>>> 上传地址: %@\n>>> 文件路径: %@\n>>> 错误信息: %@\n",[self hx_URLDecodedString:url], [self hx_URLDecodedString:uploadingFilePath], [error localizedDescription]);
         } else {
-            [self successResponse:responseObject callback:success];
+            [self successResponse:responseObject task:nil callback:success];
             [self clearCompletionBlock];
             HXLog(@" >>>>——————————> ❤️ 上 传 成 功 ❤️ <————————————<<<<\n>>> 上传地址: %@\n>>> 文件路径: %@\n>>> 返回数据: %@\n",[self hx_URLDecodedString:url], [self hx_URLDecodedString:uploadingFilePath], responseObject);
         }
@@ -488,6 +506,11 @@ static inline NSString *cachePath() {
     if (session) {
         [[self allTasks] addObject:session];
     }
+    
+    /**
+     *  恢复默认
+     */
+    [self restoreDefaults];
     
     return session;
 }
@@ -553,7 +576,8 @@ static inline NSString *cachePath() {
             [self clearCompletionBlock];
             HXLog(@" >>>>——————————> 💔 上 传 失 败 💔 <————————————<<<<\n>>> 上传地址: %@\n>>> 文件信息: %@\n>>> 携带参数: %@\n>>> 错误信息: %@\n",[self hx_URLDecodedString:url], fileSources, parameters, [error localizedDescription]);
         } else {
-            [self successResponse:responseObject callback:success];
+            [self successResponse:responseObject task:nil callback:success];
+            
             [self clearCompletionBlock];
             HXLog(@" >>>>——————————> ❤️ 上 传 成 功 ❤️ <————————————<<<<\n>>> 上传地址: %@\n>>> 文件信息: %@\n>>> 携带参数: %@\n>>> 返回数据: %@\n",[self hx_URLDecodedString:url], fileSources, parameters, responseObject);
         }
@@ -565,6 +589,11 @@ static inline NSString *cachePath() {
     if (session) {
         [[self allTasks] addObject:session];
     }
+    
+    /**
+     *  恢复默认
+     */
+    [self restoreDefaults];
     
     return session;
 }
@@ -620,7 +649,8 @@ static inline NSString *cachePath() {
         } else if (success) {
             NSString *path = [filePath.absoluteString substringFromIndex:7];
             path = [self hx_URLDecodedString:path];
-            success(path);
+            
+            [self successResponse:path task:nil callback:success];
             [self clearCompletionBlock];
             HXLog(@" >>>>——————————> ❤️ 下 载 成 功 ❤️ <————————————<<<<\n>>> 下载地址: %@\n>>> 沙盒路径:%@\n",url, path);
         }
@@ -632,6 +662,11 @@ static inline NSString *cachePath() {
         [[self allTasks] addObject:session];
     }
     
+    /**
+     *  恢复默认
+     */
+    [self restoreDefaults];
+    
     return session;
 }
 
@@ -641,6 +676,8 @@ static inline NSString *cachePath() {
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    //支持 https
+    manager.securityPolicy.allowInvalidCertificates = YES;
     
     switch (hx_requestSerializerMethod) {
         case HXRequestSerializerMethodHTTP: {
@@ -678,12 +715,14 @@ static inline NSString *cachePath() {
     
     manager.requestSerializer.stringEncoding = NSUTF8StringEncoding;
     
-    
+    //如果有请求头,添加请求头
     for (NSString *key in hx_httpHeaders.allKeys) {
         if (hx_httpHeaders[key] != nil) {
             [manager.requestSerializer setValue:hx_httpHeaders[key] forHTTPHeaderField:key];
         }
     }
+    
+    //响应数据支持的类型
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithArray:@[@"application/json",
                                                                               @"text/html",
                                                                               @"text/json",
@@ -698,6 +737,15 @@ static inline NSString *cachePath() {
     return manager;
 }
 
+- (void)restoreDefaults {
+    //恢复默认
+    hx_httpHeaders = nil;
+    hx_shouldAutoEncode = YES;
+    hx_isCache = NO;
+    hx_responseMethod = HXResponseMethodJSON;
+    hx_requestSerializerMethod = HXRequestSerializerMethodHTTP;
+}
+
 - (void)logWithSuccessResponse:(id)response url:(NSString *)url params:(NSDictionary *)params {
     [self clearCompletionBlock];
     HXLog(@" >>>>——————————> ❤️ 请 求 成 功 ❤️ <————————————<<<<\n>>> 请求接口: %@\n>>> 请求参数: %@\n>>> 返回数据: %@\n",[self hx_URLDecodedString:url],params,response);
@@ -708,8 +756,8 @@ static inline NSString *cachePath() {
     HXLog(@" >>>>——————————> 💔 请 求 失 败 💔 <————————————<<<<\n>>> 请求接口: %@\n>>> 请求参数: %@\n>>> 错误信息: %@\n",[self hx_URLDecodedString:url],params,[error localizedDescription]);
 }
 
-- (NSString *)hx_handleURL:(NSString *)string
-{
+- (NSString *)hx_handleURL:(NSString *)string {
+    
     if (![string hasPrefix:@"http://"] && ![string hasPrefix:@"https://"]) {
         
         if ([self baseUrl] == nil) {
@@ -754,11 +802,11 @@ static inline NSString *cachePath() {
     }
 }
 
-- (void)successResponse:(_Nullable id)responseData callback:(_Nullable HXResponseSuccess)success {
+- (void)successResponse:(_Nullable id)responseData task:(NSURLSessionDataTask * _Nullable)task callback:(_Nullable HXResponseSuccess)success {
     
     self.responseSuccess = success;
     if (self.responseSuccess) {
-        self.responseSuccess([self tryToParseData:responseData]);
+        self.responseSuccess(task, [self tryToParseData:responseData]);
     }
     
 }
@@ -817,14 +865,14 @@ static inline NSString *cachePath() {
         NSData *data = [[NSFileManager defaultManager] contentsAtPath:path];
         if (data) {
             cacheData = data;
-            SLog(@"Read data from cache for url: %@\n", url);
+            SLog(@"读 取 缓 存: %@\n", url);
         }
     }
     
     return cacheData;
 }
 
-- (void)cacheResponseObject:(id)responseObject request:(NSURLRequest *)request parameters:params isCache:(BOOL)isCache{
+- (void)cacheResponseObject:(id)responseObject request:(NSURLRequest *)request parameters:params isCache:(BOOL)isCache {
     if (!isCache) {
         return;
     }
@@ -842,7 +890,7 @@ static inline NSString *cachePath() {
                                                            attributes:nil
                                                                 error:&error];
                 if (error) {
-                    SLog(@"create cache dir error: %@\n", error);
+                    SLog(@" 创 建 缓 存 错 误 信 息: %@\n", error.localizedDescription);
                     return;
                 }
             }
@@ -864,9 +912,9 @@ static inline NSString *cachePath() {
             if (data && error == nil) {
                 BOOL isOk = [[NSFileManager defaultManager] createFileAtPath:path contents:data attributes:nil];
                 if (isOk) {
-                    SLog(@"cache file ok for request: %@\n", absoluteURL);
+                    SLog(@" 缓 存 请 求 完 成 : %@\n", absoluteURL);
                 } else {
-                    SLog(@"cache file error for request: %@\n", absoluteURL);
+                    SLog(@" 缓 存 请 求 失 败 : %@\n", absoluteURL);
                 }
             }
         }
@@ -874,8 +922,7 @@ static inline NSString *cachePath() {
 }
 
 //编码
-- (NSString *)hx_URLEncodedString:(NSString *)string
-{
+- (NSString *)hx_URLEncodedString:(NSString *)string {
     NSString *newString = [string stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]];
     if (newString) {
         return newString;
@@ -886,8 +933,7 @@ static inline NSString *cachePath() {
 
 
 //解码
--(NSString *)hx_URLDecodedString:(NSString*)string
-{
+-(NSString *)hx_URLDecodedString:(NSString*)string {
     
     NSString *newString = CFBridgingRelease(CFURLCreateStringByReplacingPercentEscapes(kCFAllocatorDefault,
                                                                                        (CFStringRef)string,
@@ -900,12 +946,51 @@ static inline NSString *cachePath() {
 }
 
 /**
- *  网络判断 稍后再弄
+ *  网络判断 稍后再弄 (复制这段代码就可以了,没什么必要再写了)
  */
-- (void)reachability
-{
+- (void)reachability {
     [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        
         SLog(@"Reachability: %@", AFStringFromNetworkReachabilityStatus(status));
+        switch (status) {
+                
+            case AFNetworkReachabilityStatusUnknown:{
+                
+                SLog(@"未知");
+                
+                break;
+                
+            }
+            case AFNetworkReachabilityStatusNotReachable:{
+                
+                SLog(@"无网络");
+                
+                break;
+                
+            }
+                
+            case AFNetworkReachabilityStatusReachableViaWiFi:{
+                
+                SLog(@"WiFi网络");
+                
+                break;
+                
+            }
+                
+            case AFNetworkReachabilityStatusReachableViaWWAN:{
+                
+                SLog(@"蜂窝网络");
+                
+                break;
+                
+            }
+                
+            default:
+                
+                break;
+                
+        }
+        
     }];
     
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];

@@ -9,11 +9,13 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+
 #ifndef __OPTIMIZE__
 #define SLog(...) NSLog(__VA_ARGS__)
 #else
 #define SLog(...) {}
 #endif
+
 
 /**
  *  下载进度
@@ -68,9 +70,10 @@ typedef NSURLSessionTask HXURLSessionTask;
 /**
  *  请求成功的回调
  *
- *  @param response 服务端返回的数据类型，通常是字典
+ *  @param cache          YES 代表是缓存, NO 代表是新数据
+ *  @param responseObject 服务端返回的数据类型，通常是字典
  */
-typedef void(^HXResponseSuccess)(id _Nullable responseObject);
+typedef void(^HXResponseSuccess)(NSURLSessionDataTask * _Nullable task, id _Nullable responseObject);
 
 /**
  *  网络响应失败时的回调
@@ -94,7 +97,7 @@ typedef void(^HXResponseFail)( NSError * _Nullable error);
  *
  *  @return HXResponseManager
  */
-+ (nonnull HXResponseManager *)manager;
++ (nonnull instancetype)manager;
 
 /**
  *  用于指定网络请求接口的基础url，如：
@@ -177,7 +180,7 @@ typedef void(^HXResponseFail)( NSError * _Nullable error);
 - (void)configMimeType_key:(nonnull NSString *)key;
 
 /**
- *  网络判断 稍后再弄
+ *  网络判断
  */
 - (void)reachability;
 
@@ -262,13 +265,13 @@ typedef void(^HXResponseFail)( NSError * _Nullable error);
  *
  *  @param url         上传图片的接口路径，如/path/images/
  *  @param fileSources 源文件数组<字典>  例如: @[
-                                               @{
-                                                  @"fileData": UIImage / Data / Path( 沙盒路径 FileURL),只能是这三种类型
-                                                  @"name": @"随便", 可以是nil
-                                                  @"fileName": @"12345",
-                                                  @"mimeType": @"image/jepg"
-                                                }
-                                              ]
+ @{
+ @"fileData": UIImage / Data / Path( 沙盒路径 FileURL),只能是这三种类型
+ @"name": @"随便", 可以是nil
+ @"fileName": @"12345",
+ @"mimeType": @"image/jepg"
+ }
+ ]
  *  @param parameters  携带参数 可以是 nil
  *  @param progress    上传进度(回到主线程更新UI)
  *  @param success     上传成功回调

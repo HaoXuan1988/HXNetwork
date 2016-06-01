@@ -16,8 +16,8 @@
  * 打印日志
  */
 
-#ifdef DEBUG
-#define HXLog(format, ...) NSLog((@"———————————— * * * * *  HXNetwork 打印日志  * * * * * ————————————\n\n< 执行文件 >: %@ \n< 执行代码 >: %d 行 \n< 执行函数 >: %s \n< 执行内容 >: " format @"\n\n\n"), [[[NSString stringWithFormat:@"%s", __FILE__] componentsSeparatedByString:@"/"] lastObject], __LINE__, __PRETTY_FUNCTION__, ##__VA_ARGS__)
+#if DEBUG
+#define HXLog(FORMAT, ...) fprintf(stderr,"\n\n———————————————————————————————————— * * * * *  HXNetwork 请求日志  * * * * * ————————————————————————————————————\n\n[ 执 行 文 件 ]: %s \n[ 执 行 函 数 ]: %s \n[ 执 行 行 数 ]: %d 行\n[ 执 行 内 容 ]:%s\n———————————————————————————————————— * * * * *  结 束  * * * * * ————————————————————————————————————", [[[[NSString stringWithFormat:@"%s", __FILE__] componentsSeparatedByString:@"/"] lastObject] UTF8String], __FUNCTION__, __LINE__, [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
 #else
 #define HXLog(...) {}
 #endif

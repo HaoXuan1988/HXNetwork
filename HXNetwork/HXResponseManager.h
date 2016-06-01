@@ -80,7 +80,7 @@ typedef void(^HXResponseSuccess)(NSURLSessionDataTask * _Nullable task, id _Null
  *
  *  @param error 错误信息
  */
-typedef void(^HXResponseFail)( NSError * _Nullable error);
+typedef void(^HXResponseFail)(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error);
 
 /**
  *  基于AFNetworking的网络层封装类.
@@ -121,7 +121,7 @@ typedef void(^HXResponseFail)( NSError * _Nullable error);
  *
  *  @param isCache  BOOL
  */
-- (void)cofigCache:(BOOL)isCache;
+- (void)configCache:(BOOL)isCache;
 
 /**
  *  配置返回格式，默认为JSON。若为XML或者PLIST请在全局修改一下
@@ -321,5 +321,54 @@ typedef void(^HXResponseFail)( NSError * _Nullable error);
                                       progress:(nullable HXDownloadProgress)progressBlock
                                        success:(nullable HXResponseSuccess)success
                                        failure:(nullable HXResponseFail)failure;
+
+/**
+ *  HEAD 请求 不带参数
+ *
+ *  @param url     URL
+ *  @param success 成功
+ *  @param fail    失败
+ *
+ *  @return NSURLSessionTask
+ */
+- (nullable HXURLSessionTask *)headWithUrl:(nullable NSString *)url
+                                   success:(nullable HXResponseSuccess)success
+                                      fail:(nullable HXResponseFail)fail;
+
+/**
+ *  HEAD 请求 带参数
+ *
+ *  @param url     URL
+ *  @param params   参数
+ *  @param success 成功
+ *  @param fail    失败
+ *
+ *  @return NSURLSessionTask
+ */
+- (nullable HXURLSessionTask *)headWithUrl:(nullable NSString *)url
+                                    params:(nullable NSDictionary *)params
+                                   success:(nullable HXResponseSuccess)success
+                                      fail:(nullable HXResponseFail)fail;
+
+/**
+ *  通用的请求
+ *
+ *  @param url          URL
+ *  @param httpMethod   httpMethod
+ *  @param params       参数
+ *  @param networkCache 缓存
+ *  @param progress     进度
+ *  @param success      成功
+ *  @param fail         失败
+ *
+ *  @return NSURLSessionTask
+ */
+- (nullable HXURLSessionTask *)requestWithUrl:(nullable NSString *)url
+                           httpMedth:(HXRequestMethod)httpMethod
+                              params:(nullable NSDictionary *)params
+                        networkCache:(BOOL)networkCache
+                            progress:(nullable HXDownloadProgress)progress
+                             success:(nullable HXResponseSuccess)success
+                                fail:(nullable HXResponseFail)fail;
 
 @end

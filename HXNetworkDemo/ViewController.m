@@ -52,19 +52,20 @@
      */
     [manager configCommonHttpHeaders:@{@"apikey":@"8e4dd1aebc9f047a58da2a0baeadfd34"}];
     //这里可以直接给 http:// .......
-    [manager getWithUrl:@"?city=上海" success:^(id  _Nullable responseObject) {
+    [manager getWithUrl:@"" success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
+        
         for (NSDictionary *dic in [responseObject objectForKey:@"HeWeather data service 3.0"]) {
             
             WeatherModel *model = [WeatherModel mj_objectWithKeyValues:dic];
             [self.datas addObject:model];
             
             NSLog(@"pm2.5 : %@", model.aqi.city.pm25);
-        
+            
         }
-       
-    } fail:^(NSError * _Nullable error) {
+    } fail:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
         
     }];
+
 
     
     
@@ -79,11 +80,12 @@
      POST
      */
     [manager configCommonHttpHeaders:@{@"apikey":@"8e4dd1aebc9f047a58da2a0baeadfd34"}];
-    [manager postWithUrl:nil params:@{@"city":@"北京"} success:^(id _Nullable responseObject) {
+    [manager configCache:YES];
+    [manager postWithUrl:nil params:@{@"city":@"北京"} success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
         
         //code...
         
-    } fail:^(NSError * _Nullable error) {
+    } fail:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
         
     }];
     
@@ -129,10 +131,10 @@
                            @"method": @"Delete",
                            @"id": @12
                            };
-    [manager postWithUrl:@"http://apis.baidu.com/idl_baidu/faceverifyservice/face_deleteuser" params:json success:^(id  _Nullable responseObject) {
+    [manager postWithUrl:@"http://apis.baidu.com/idl_baidu/faceverifyservice/face_deleteuser" params:json success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
         
         
-    } fail:^(NSError * _Nullable error) {
+    } fail:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
         
     }];
     
@@ -157,12 +159,12 @@
             //
         });
         
-    } success:^(id _Nullable responseObject) {
+    } success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
         //得到保存的沙盒路径
         //可以做一些事情 例如:
         [imageView setImage:[UIImage imageWithContentsOfFile:responseObject]];
         
-    } failure:^(NSError * _Nullable error) {
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
         
     }];
     

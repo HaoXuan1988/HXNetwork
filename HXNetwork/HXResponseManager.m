@@ -15,14 +15,11 @@
 /*
  * 打印日志
  */
-
 #if DEBUG
-#define HXLog(FORMAT, ...) fprintf(stderr,"\n\n———————————————————————————————————— * * * * *  HXNetwork 请求日志  * * * * * ————————————————————————————————————\n\n[ 执 行 文 件 ]: %s \n[ 执 行 函 数 ]: %s \n[ 执 行 行 数 ]: %d 行\n[ 执 行 内 容 ]:%s\n———————————————————————————————————— * * * * *  结 束  * * * * * ————————————————————————————————————", [[[[NSString stringWithFormat:@"%s", __FILE__] componentsSeparatedByString:@"/"] lastObject] UTF8String], __FUNCTION__, __LINE__, [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
+#define HXLog(FORMAT, ...) fprintf(stderr,"\n\n———————————————————————————————————— * * * * *  HXNetwork 请求日志  * * * * * ————————————————————————————————————\n%s\n——————————————————————————--——————————————— * * * * *  结 束  * * * * * —————————————————————————————————————————\n", [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
 #else
 #define HXLog(...) {}
 #endif
-
-
 
 @interface NSString (md5)
 
@@ -146,9 +143,9 @@ static inline NSString *cachePath() {
         [[NSFileManager defaultManager] removeItemAtPath:directoryPath error:&error];
         
         if (error) {
-            SLog(@" 清 除 缓 存 错 误: %@", error.localizedDescription);
+            NSLog(@" 清 除 缓 存 错 误: %@", error.localizedDescription);
         } else {
-            SLog(@" 清 除 缓 存 完 成");
+            NSLog(@" 清 除 缓 存 完 成");
         }
     }
 }
@@ -247,12 +244,12 @@ static inline NSString *cachePath() {
                                      fail:(nullable HXResponseFail)fail {
     
     return [self requestWithUrl:url
-                       httpMedth:HXRequestMethodGet
-                          params:params
-                    networkCache:hx_isCache
-                        progress:progress
-                         success:success
-                            fail:fail];
+                      httpMedth:HXRequestMethodGet
+                         params:params
+                   networkCache:hx_isCache
+                       progress:progress
+                        success:success
+                           fail:fail];
 }
 
 - (nullable HXURLSessionTask *)postWithUrl:(nullable NSString *)url
@@ -273,12 +270,12 @@ static inline NSString *cachePath() {
                                       fail:(nullable HXResponseFail)fail {
     
     return [self requestWithUrl:url
-                       httpMedth:HXRequestMethodPost
-                          params:params
-                    networkCache:hx_isCache
-                        progress:progress
-                         success:success
-                            fail:fail];
+                      httpMedth:HXRequestMethodPost
+                         params:params
+                   networkCache:hx_isCache
+                       progress:progress
+                        success:success
+                           fail:fail];
 }
 
 
@@ -293,9 +290,9 @@ static inline NSString *cachePath() {
 
 
 - (nullable HXURLSessionTask *)headWithUrl:(nullable NSString *)url
-                                      params:(nullable NSDictionary *)params
-                                     success:(nullable HXResponseSuccess)success
-                                        fail:(nullable HXResponseFail)fail {
+                                    params:(nullable NSDictionary *)params
+                                   success:(nullable HXResponseSuccess)success
+                                      fail:(nullable HXResponseFail)fail {
     return [self requestWithUrl:url
                       httpMedth:HXRequestMethodHead
                          params:params
@@ -306,15 +303,15 @@ static inline NSString *cachePath() {
 }
 
 - (HXURLSessionTask *)requestWithUrl:(nullable NSString *)url
-                            httpMedth:(HXRequestMethod)httpMethod
-                               params:(nullable NSDictionary *)params
-                         networkCache:(BOOL)networkCache
-                             progress:(nullable HXDownloadProgress)progress
-                              success:(nullable HXResponseSuccess)success
-                                 fail:(nullable HXResponseFail)fail {
+                           httpMedth:(HXRequestMethod)httpMethod
+                              params:(nullable NSDictionary *)params
+                        networkCache:(BOOL)networkCache
+                            progress:(nullable HXDownloadProgress)progress
+                             success:(nullable HXResponseSuccess)success
+                                fail:(nullable HXResponseFail)fail {
     
     if (url != nil && ![url isKindOfClass:[NSString class]]) {
-        SLog(@"请重新检查 baseUrl 或 url 😖❓ --> %@", url);
+        NSLog(@"请重新检查 baseUrl 或 url 😖❓ --> %@", url);
         return nil;
     }
     AFHTTPSessionManager *manager = [self managers];
@@ -324,7 +321,7 @@ static inline NSString *cachePath() {
     url = [self hx_handleURL:url];
     
     if ([NSURL URLWithString:url] == nil) {
-        SLog(@"请重新检查 baseUrl 或 url ");
+        NSLog(@"请重新检查 baseUrl 或 url ");
         return nil;
     }
     
@@ -338,15 +335,15 @@ static inline NSString *cachePath() {
         if (networkCache) {
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
                 
-            id response = [self cahceResponseWithURL:url parameters:params];
-            if (response) {
-                self.responseSuccess = success;
-                if (self.responseSuccess) {
-                    dispatch_async( dispatch_get_main_queue(), ^{
-                        self.responseSuccess(nil, [self tryToParseData:response]);
-                    });
+                id response = [self cahceResponseWithURL:url parameters:params];
+                if (response) {
+                    self.responseSuccess = success;
+                    if (self.responseSuccess) {
+                        dispatch_async( dispatch_get_main_queue(), ^{
+                            self.responseSuccess(nil, [self tryToParseData:response]);
+                        });
+                    }
                 }
-            }
             });
         }
     }
@@ -493,7 +490,7 @@ static inline NSString *cachePath() {
     
     url = [self hx_handleURL:url];
     if ([NSURL URLWithString:url] == nil) {
-        SLog(@"URLString无效，无法生成URL。%@", url);
+        NSLog(@"URLString无效，无法生成URL。%@", url);
         return nil;
     }
     
@@ -501,13 +498,13 @@ static inline NSString *cachePath() {
     
     uploadingFilePath = [self hx_URLEncodedString:uploadingFilePath];
     if (!uploadingFilePath) {
-        SLog(@"uploadingFilePath 无效，无法生成URL。请检查待上传文件是否存在  %@", uploadingFilePath);
+        NSLog(@"uploadingFilePath 无效，无法生成URL。请检查待上传文件是否存在  %@", uploadingFilePath);
         return nil;
     }
     NSURL *fromFile = [NSURL fileURLWithPath:uploadingFilePath];
     
     if (!request || !fromFile) {
-        SLog(@"请重新检查 URL: %@ ===> FilePath: %@", url, uploadingFilePath);
+        NSLog(@"请重新检查 URL: %@ ===> FilePath: %@", url, uploadingFilePath);
         return nil;
     }
     
@@ -524,11 +521,11 @@ static inline NSString *cachePath() {
                 fail(nil, error);
             }
             [self clearCompletionBlock];
-            HXLog(@" >>>>——————————> 💔 上 传 失 败 💔 <————————————<<<<\n>>> 上传地址: %@\n>>> 文件路径: %@\n>>> 错误信息: %@\n",[self hx_URLDecodedString:url], [self hx_URLDecodedString:uploadingFilePath], [error localizedDescription]);
+            HXLog(@"\n   💔 上 传 失 败 💔\n\n>>> 上传地址: %@\n>>> 文件路径: %@\n>>> 错误信息: %@\n",[self hx_URLDecodedString:url], [self hx_URLDecodedString:uploadingFilePath], [error localizedDescription]);
         } else {
             [self successResponse:responseObject task:nil callback:success];
             [self clearCompletionBlock];
-            HXLog(@" >>>>——————————> ❤️ 上 传 成 功 ❤️ <————————————<<<<\n>>> 上传地址: %@\n>>> 文件路径: %@\n>>> 返回数据: %@\n",[self hx_URLDecodedString:url], [self hx_URLDecodedString:uploadingFilePath], responseObject);
+            HXLog(@"\n   ❤️ 上 传 成 功 ❤️\n\n>>> 上传地址: %@\n>>> 文件路径: %@\n>>> 返回数据: %@\n",[self hx_URLDecodedString:url], [self hx_URLDecodedString:uploadingFilePath], responseObject);
         }
         [[self allTasks] removeObject:session];
     }];
@@ -555,7 +552,7 @@ static inline NSString *cachePath() {
                                         fail:(nullable HXResponseFail)fail {
     url = [self hx_handleURL:url];
     if ([NSURL URLWithString:url] == nil) {
-        SLog(@"URLString无效，无法生成URL。%@", url);
+        NSLog(@"URLString无效，无法生成URL。%@", url);
         return nil;
     }
     
@@ -606,12 +603,12 @@ static inline NSString *cachePath() {
                 fail(nil, error);
             }
             [self clearCompletionBlock];
-            HXLog(@" >>>>——————————> 💔 上 传 失 败 💔 <————————————<<<<\n>>> 上传地址: %@\n>>> 文件信息: %@\n>>> 携带参数: %@\n>>> 错误信息: %@\n",[self hx_URLDecodedString:url], fileSources, parameters, [error localizedDescription]);
+            HXLog(@"\n   💔 上 传 失 败 💔\n\n>>> 上传地址: %@\n>>> 文件信息: %@\n>>> 携带参数: %@\n>>> 错误信息: %@\n",[self hx_URLDecodedString:url], fileSources, parameters, [error localizedDescription]);
         } else {
             [self successResponse:responseObject task:nil callback:success];
             
             [self clearCompletionBlock];
-            HXLog(@" >>>>——————————> ❤️ 上 传 成 功 ❤️ <————————————<<<<\n>>> 上传地址: %@\n>>> 文件信息: %@\n>>> 携带参数: %@\n>>> 返回数据: %@\n",[self hx_URLDecodedString:url], fileSources, parameters, responseObject);
+            HXLog(@"\n   ❤️ 上 传 成 功 ❤️\n\n>>> 上传地址: %@\n>>> 文件信息: %@\n>>> 携带参数: %@\n>>> 返回数据: %@\n",[self hx_URLDecodedString:url], fileSources, parameters, responseObject);
         }
         [[self allTasks] removeObject:session];
     }];
@@ -639,7 +636,7 @@ static inline NSString *cachePath() {
     
     url = [self hx_handleURL:url];
     if ([NSURL URLWithString:url] == nil) {
-        SLog(@"URLString无效，无法生成URL。%@", url);
+        NSLog(@"URLString无效，无法生成URL。%@", url);
         return nil;
     }
     
@@ -677,14 +674,14 @@ static inline NSString *cachePath() {
         if (error) {
             failure(nil, error);
             [self clearCompletionBlock];
-            HXLog(@" >>>>——————————> 💔 下 载 失 败 💔 <————————————<<<<\n>>> 下载地址: %@\n>>> 错误信息:%@\n",[self hx_URLDecodedString:url], [error localizedDescription]);
+            HXLog(@"\n   💔 下 载 失 败 💔\n\n>>> 下载地址: %@\n>>> 错误信息:%@\n",[self hx_URLDecodedString:url], [error localizedDescription]);
         } else if (success) {
             NSString *path = [filePath.absoluteString substringFromIndex:7];
             path = [self hx_URLDecodedString:path];
             
             [self successResponse:path task:nil callback:success];
             [self clearCompletionBlock];
-            HXLog(@" >>>>——————————> ❤️ 下 载 成 功 ❤️ <————————————<<<<\n>>> 下载地址: %@\n>>> 沙盒路径:%@\n",[self hx_URLDecodedString:url], path);
+            HXLog(@"\n   ❤️ 下 载 成 功 ❤️\n\n>>> 下载地址: %@\n>>> 沙盒路径:%@\n",[self hx_URLDecodedString:url], path);
         }
         [[self allTasks] removeObject:session];
     }];
@@ -765,7 +762,7 @@ static inline NSString *cachePath() {
     
     //设置超时
     manager.requestSerializer.timeoutInterval = 20;
-
+    
     // 设置允许同时最大并发数量，过大容易出问题
     manager.operationQueue.maxConcurrentOperationCount = 4;
     
@@ -783,12 +780,12 @@ static inline NSString *cachePath() {
 
 - (void)logWithSuccessResponse:(id)response url:(NSString *)url params:(NSDictionary *)params {
     [self clearCompletionBlock];
-    HXLog(@" >>>>——————————> ❤️ 请 求 成 功 ❤️ <————————————<<<<\n>>> 请求接口: %@\n>>> 请求参数: %@\n>>> 返回数据: %@\n",[self hx_URLDecodedString:url],params,response);
+    HXLog(@"\n   ❤️ 请 求 成 功 ❤️\n\n>>> 请求接口: %@\n>>> 请求参数: %@\n>>> 返回数据: %@\n",[self hx_URLDecodedString:url],params,response);
 }
 
 - (void)logWithFailError:(NSError *)error url:(NSString *)url params:(NSDictionary *)params {
     [self clearCompletionBlock];
-    HXLog(@" >>>>——————————> 💔 请 求 失 败 💔 <————————————<<<<\n>>> 请求接口: %@\n>>> 请求参数: %@\n>>> 错误信息: %@\n",[self hx_URLDecodedString:url],params,[error localizedDescription]);
+    HXLog(@"\n   💔 请 求 失 败 💔\n\n>>> 请求接口: %@\n>>> 请求参数: %@\n>>> 错误信息: %@\n",[self hx_URLDecodedString:url],params,[error localizedDescription]);
 }
 
 - (NSString *)hx_handleURL:(NSString *)string {
@@ -900,7 +897,7 @@ static inline NSString *cachePath() {
         NSData *data = [[NSFileManager defaultManager] contentsAtPath:path];
         if (data) {
             cacheData = data;
-            SLog(@"读 取 缓 存: %@\n", url);
+            NSLog(@"读 取 缓 存: %@\n", url);
         }
     }
     
@@ -925,7 +922,7 @@ static inline NSString *cachePath() {
                                                            attributes:nil
                                                                 error:&error];
                 if (error) {
-                    SLog(@" 创 建 缓 存 错 误 信 息: %@\n", error.localizedDescription);
+                    NSLog(@" 创 建 缓 存 错 误 信 息: %@\n", error.localizedDescription);
                     return;
                 }
             }
@@ -947,9 +944,9 @@ static inline NSString *cachePath() {
             if (data && error == nil) {
                 BOOL isOk = [[NSFileManager defaultManager] createFileAtPath:path contents:data attributes:nil];
                 if (isOk) {
-                    SLog(@" 缓 存 请 求 完 成 : %@\n", absoluteURL);
+                    NSLog(@" 缓 存 请 求 完 成 : %@\n", absoluteURL);
                 } else {
-                    SLog(@" 缓 存 请 求 失 败 : %@\n", absoluteURL);
+                    NSLog(@" 缓 存 请 求 失 败 : %@\n", absoluteURL);
                 }
             }
         }
@@ -990,7 +987,7 @@ static inline NSString *cachePath() {
                 
             case AFNetworkReachabilityStatusNotReachable:{
                 
-                SLog(@"当前网络: 无网络");
+                NSLog(@"当前网络: 无网络");
                 
                 break;
                 
@@ -998,7 +995,7 @@ static inline NSString *cachePath() {
                 
             case AFNetworkReachabilityStatusReachableViaWiFi:{
                 
-                SLog(@"当前网络: WiFi网络");
+                NSLog(@"当前网络: WiFi网络");
                 
                 break;
                 
@@ -1006,7 +1003,7 @@ static inline NSString *cachePath() {
                 
             case AFNetworkReachabilityStatusReachableViaWWAN:{
                 
-                SLog(@"当前网络: 蜂窝网络");
+                NSLog(@"当前网络: 蜂窝网络");
                 
                 break;
                 
@@ -1014,7 +1011,7 @@ static inline NSString *cachePath() {
                 
             case AFNetworkReachabilityStatusUnknown:
             default:
-                SLog(@"当前网络: 未知");
+                NSLog(@"当前网络: 未知");
                 break;
                 
         }

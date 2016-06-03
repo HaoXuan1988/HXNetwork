@@ -7,11 +7,22 @@
 //
 
 #import "NSArray+HXExtension.h"
+#import <objc/runtime.h>
+#import "NSObject+HXExtension.h"
 
 @implementation NSArray (HXExtension)
 
+#pragma mark 判断数组是否为空
+- (BOOL)isEmpty {
+    if (self == nil || self.count == 0 || ![self isKindOfClass:[NSArray class]]) {
+        return YES;
+    }else{
+        return NO;
+    }
+}
+
 #pragma mark  数组转字符串
--(NSString *)hx_string{
+- (NSString *)hx_string {
     
     if(self==nil || self.count==0) return @"";
     
@@ -27,7 +38,7 @@
 }
 
 #pragma mark  数组比较
--(BOOL)hx_compareIgnoreObjectOrderWithArray:(NSArray *)array{
+- (BOOL)hx_compareIgnoreObjectOrderWithArray:(NSArray *)array {
     
     NSSet *set1=[NSSet setWithArray:self];
     
@@ -37,7 +48,7 @@
 }
 
 #pragma mark  数组计算交集
--(NSArray *)hx_arrayForIntersectionWithOtherArray:(NSArray *)otherArray{
+- (NSArray *)hx_arrayForIntersectionWithOtherArray:(NSArray *)otherArray {
     
     NSMutableArray *intersectionArray=[NSMutableArray array];
     
@@ -57,7 +68,7 @@
 }
 
 #pragma mark  数据计算差集
--(NSArray *)hx_arrayForMinusWithOtherArray:(NSArray *)otherArray{
+- (NSArray *)hx_arrayForMinusWithOtherArray:(NSArray *)otherArray {
     
     if(self==nil) return nil;
     
@@ -77,6 +88,9 @@
     
     return minusArray;
 }
+
+
+
 
 
 #pragma mark  打印
@@ -106,6 +120,7 @@
     [desc appendString:@"[\n"];
     
     for (id obj in self) {
+        
         if ([obj isKindOfClass:[NSDictionary class]]
             || [obj isKindOfClass:[NSArray class]]
             || [obj isKindOfClass:[NSSet class]]) {
@@ -145,7 +160,13 @@
                 }
             }
         } else {
-            [desc appendFormat:@"   %@%@,\n", tab, obj];
+            
+            //TMD 打印出来太丑了
+            [desc appendFormat:@" <%s>\n",class_getName([obj class])];
+            NSDictionary *Properties = [obj getAllPropertiesAndValue];
+            NSString *str = [((NSDictionary *)Properties) descriptionWithLocale:locale indent:level + 1];
+            [desc appendFormat:@"   %@%@,\n", tab, str];
+            
         }
     }
     
@@ -159,6 +180,7 @@
     return desc;
 }
 #endif
+
 
 
 @end

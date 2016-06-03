@@ -7,6 +7,8 @@
 //
 
 #import "NSSet+HXExtension.h"
+#import "NSObject+HXExtension.h"
+#import <objc/runtime.h>
 
 @implementation NSSet (HXExtension)
 
@@ -78,7 +80,11 @@
                 }
             }
         } else {
-            [desc appendFormat:@"%@   %@,\n", tab, obj];
+            //TMD 打印出来太丑了
+            [desc appendFormat:@" <%s>\n",class_getName([obj class])];
+            NSDictionary *Properties = [obj getAllPropertiesAndValue];
+            NSString *str = [((NSDictionary *)Properties) descriptionWithLocale:locale indent:level + 1];
+            [desc appendFormat:@"   %@%@,\n", tab, str];
         }
     }
     desc = [NSMutableString stringWithString:[desc substringWithRange:NSMakeRange(0, [desc length] - 2)]];
@@ -87,6 +93,7 @@
     }else{
         [desc appendFormat:@"\n%@]}", tab];
     }
+    
     
     return desc;
 }

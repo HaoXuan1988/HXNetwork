@@ -10,13 +10,6 @@
 #import <UIKit/UIKit.h>
 
 
-#ifndef __OPTIMIZE__
-#define SLog(...) NSLog(__VA_ARGS__)
-#else
-#define SLog(...) {}
-#endif
-
-
 /**
  *  下载进度
  *

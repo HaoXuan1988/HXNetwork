@@ -7,8 +7,22 @@
 //
 
 #import "NSDictionary+HXExtension.h"
+#import "NSObject+HXExtension.h"
 
 @implementation NSDictionary (HXExtension)
+
+
+#pragma mark 处理字典空值
+- (NSDictionary *)handleDictionary {
+    NSMutableDictionary *resultDic = [[NSMutableDictionary alloc]initWithDictionary:self];
+    for (NSString *key in self.allKeys) {
+        
+        if ([[resultDic objectForKey:key] isEqual:[NSNull null]]) {
+            [resultDic setValue:@"" forKey:key];
+        }
+    }
+    return resultDic;
+}
 
 
 #if DEBUG
@@ -39,6 +53,7 @@
     
     // 遍历数组,self就是当前的数组
     for (id key in self.allKeys) {
+        
         id obj = [self objectForKey:key];
         if ([obj isKindOfClass:[NSNull class]]) {
             [desc appendFormat:@"   %@\"%@\" : null,\n", tab, key];
@@ -49,6 +64,7 @@
         } else if ([obj isKindOfClass:[NSArray class]]
                    || [obj isKindOfClass:[NSDictionary class]]
                    || [obj isKindOfClass:[NSSet class]]) {
+            
             [desc appendFormat:@"   %@\"%@\" : %@,\n", tab, key, [obj descriptionWithLocale:locale indent:level + 1]];
         } else if ([obj isKindOfClass:[NSData class]]) {
             // 如果是NSData类型，尝试去解析结果，以打印出可阅读的数据
@@ -80,7 +96,11 @@
                 }
             }
         } else {
-            [desc appendFormat:@"   %@\"%@\" : %@,\n", tab, key, obj];
+            //TMD 打印出来太丑了
+            [desc appendFormat:@" <%s>\n",class_getName([obj class])];
+            NSDictionary *Properties = [obj getAllPropertiesAndValue];
+            NSString *str = [((NSDictionary *)Properties) descriptionWithLocale:locale indent:level + 1];
+            [desc appendFormat:@"   %@\"%@\" : %@,\n", tab, key, str];
         }
     }
     desc = [NSMutableString stringWithString:[desc substringWithRange:NSMakeRange(0, [desc length] - 2)]];

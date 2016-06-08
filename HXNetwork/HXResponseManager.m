@@ -67,9 +67,24 @@ static NSString *mimeType_key = @"mimeType";
     static HXResponseManager *sharedInstance;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedInstance = [[self alloc] init];
+        sharedInstance = [[self alloc] initPrivate];
     });
     return sharedInstance;
+}
+
++ (instancetype)allocWithZone:(struct _NSZone *)zone {
+    return [self manager];
+}
+
+- (instancetype)init {
+    return [[self class] manager];
+}
+
+- (instancetype)initPrivate {
+    self = [super init];
+    if (self) {
+    }
+    return self;
 }
 
 - (void)updateBaseUrl:(nonnull NSString *)baseUrl {
